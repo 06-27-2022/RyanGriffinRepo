@@ -1,0 +1,21 @@
+public class gradeCalculator{
+	
+	public static void main(String[] args) {
+		
+		int[] arr = {95, 85, 62, 40, 79};
+		for(int i = 0; i < arr.length; i++) {
+			//System.out.println(i); 
+		if (i <= 100 && i >=90) {
+			System.out.println("A");
+		} else if (i <= 89 && i >= 80) {
+			System.out.println("B");
+		} else if (i <= 79 && i >= 70) {
+			System.out.println("C");
+		} else if (i <= 69 && i >= 60) {
+			System.out.println("D");
+		} else {
+			System.out.println("E");
+		}
+	}
+}
+}

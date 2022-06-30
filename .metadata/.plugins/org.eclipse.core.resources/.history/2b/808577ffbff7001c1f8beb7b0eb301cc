@@ -1,0 +1,72 @@
+public class PrimitiveDataTypes{
+	
+	public static void main(String[] args) {
+		
+		/*
+		 * Programming languages allow us to represent us to real-world data
+		 * quite easily. We can represent the simplest types right out
+		 * of the box by using built-in primitive data types. There are
+		 * 8 primitive data types in Java:
+		 * 
+		 * boolean (negligible bit value) - represent value of either true or false
+		 * char (2 bit values) - represents a single character
+		 * byte (8 bit values) - represents a value between -128 and 127
+		 * short (16 bit values) - represents a whole number
+		 * int (32 bit values) - represents a whole number
+		 * float (32 bit values) - represents a floating point value
+		 * long (64 bit values) - represents a whole number
+		 * double (64 bit values) - represents a floating point value
+		 *
+		 * These primitive data types are often used as building blocks
+		 * for more complex types (e.g. classes).
+		 * Please note that your primitive data types have upper limits
+		 * on the amount of data they can store.
+		 */
+		
+		/*
+		 * These are variable declarations and assignments. A variable
+		 * declaration consists of a type and a variable name. The
+		 * actual assignment entails using "=" operator to assign a value.
+		 */
+		
+		boolean isTrue = true;
+		char aChar = 'b';
+		byte aByte = 128;
+		short aShort = 1280;
+		int anInt = 899922242;
+		float aFloat = 8.78888f; //note that the "f/F" must be present
+		long aLong = 875497593959745973L; //note that the "l/L" must be present
+		double aDouble = 832424.33d; //note that the "d/D" is optional
+		
+		//Operators
+		
+		//Assignment Operator
+		int myNum = 89; //myNum has been assigned a value of 89
+		
+		//Equality Operator: This is used to compare values
+		System.out.println(myNum == 90);
+		
+		//Basic Math (+, -, *, /, %)
+		
+		int a = 8;
+		int b = 3;
+		int answer = a / b;
+		System.out.println(answer);
+		
+		//Also watch out for primitive promotion while doing math!
+		short c = 8;
+		short d = 9;
+		int e = c +d;
+		
+		//Greater than or less than
+		System.out.println(4 >= 5);
+		
+		//Ternary Operator: This operator allows you to make conditional
+		//assignments based on whether or not
+		
+		int dependency = 8;
+		int conditionalVar = (dependency > 5) ? 10 : 20;
+	}
+}
+
+

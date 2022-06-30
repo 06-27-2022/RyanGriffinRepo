@@ -1,0 +1,23 @@
+public class ControlFlowStatements{
+	
+	public static void main(String[] args) {
+		/*
+		 * decision statements
+		 * : if statements, else if, switch
+		 * 
+		 * 
+		 * 
+		 * looping statement
+		 * : for, while. do while, enhanced for loop
+		 * 
+		 */
+		
+		//Decision statement
+		//if statement:
+		int num = 5;
+		
+		if (num == 5) {
+			System.out.println(num);
+		}
+	}
+}
