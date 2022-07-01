@@ -8,7 +8,7 @@ public class gradeCalculator{
 		
 		for(int i = 0; i < arr.length; i++) {	
 			
-		if (arr[i] <= 100 && arr[i] >=90) {
+		if (arr[i] <= 100 && arr[i] >= 90) {
 			System.out.println(subjects[i] + "A");
 		} else if (arr[i] <= 89 && arr[i] >= 80) {
 			System.out.println(subjects[i] + "B");
@@ -17,7 +17,7 @@ public class gradeCalculator{
 		} else if (arr[i] <= 69 && arr[i] >= 60) {
 			System.out.println(subjects[i] + "D");
 		} else {
-			System.out.println(subjects[i] + "E");
+			System.out.println(subjects[i] + "F");
 		}
 	}
 }

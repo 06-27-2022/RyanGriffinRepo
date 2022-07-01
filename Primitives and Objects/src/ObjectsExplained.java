@@ -22,6 +22,9 @@ public class ObjectsExplained {
 		 * one bug one being that primitives don't have methods/behaviors
 		 * associated with them. In order to create an object, you must
 		 * use a constructor in conjunction with the "new".
+		 * 
+		 * Please note that we have made an instance of the Object class
+		 * here. All classes implicitly
 		 */
 		
 		int a = 8;
