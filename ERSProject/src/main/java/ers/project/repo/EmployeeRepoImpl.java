@@ -1,6 +1,6 @@
 package ers.project.repo;
 
-import java.sql.Connection;
+import java.sql.Connection;  
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +26,7 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet set = null;
-		//Declaring the list and initalizing the List we will return at the end of this method.
+		//Declaring the list and initializing the List we will return at the end of this method.
 		List<EmployeeAccount> employees = new ArrayList<>();
 		
 		//Declare my SQL query string ahead of time:
@@ -52,11 +52,7 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 						set.getInt(1),
 						set.getString(2),
 						set.getString(3),
-						set.getString(4),
-						set.getString(5),
-						set.getString(6),
-						set.getInt(7));
-				
+						set.getBoolean(4));
 				/*
 				 * Add EmployeeAccount objects to List<EmployeeAccount>
 				 * on each iteration.
@@ -82,19 +78,15 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 		
 		return employees;
 	}
-
-	/*
-	 * Add EmployeeAccount to the DB.
-	 */
 	@Override
-	public void addAccount(EmployeeAccount employee) {
+	public void saveAccount(EmployeeAccount employee) {
 		
 		Connection conn = null;
 
 		PreparedStatement stmt = null;
 		
 		// Alter SQL String to a parameterized SQL String (question marks being parameters).
-		final String SQL = "insert into employees values(default, ?, ?, ?, ?, 'employee', ?)";
+		final String SQL = "insert into employees values(default, ?, ?, false)";
 		
 		try {
 			conn = ConnectionUtil.getNewConnection();
@@ -102,10 +94,7 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 			
 			// Specify values of ? parameters
 			stmt.setString(1, employee.getUsername());
-			stmt.setString(2, employee.getPassword());
-			stmt.setString(3, employee.getFirstName());
-			stmt.setString(4, employee.getLastName());
-			stmt.setInt(5, employee.getAccountBalance());
+			stmt.setString(2, employee.getPasswrd());
 			stmt.execute();
 			
 		}catch(SQLException e) {
@@ -124,43 +113,6 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 		
 	}
 	
-	/**
-	 * Update Employee account balance
-	 */
-	@Override
-	public void updateBalance(EmployeeAccount employee) {
-		
-		// Open a Connection to your DB.
-		Connection conn = null;
-		
-		// Need a Statement object to run queries against the DB.
-		PreparedStatement stmt = null;
-		final String SQL = "update employees set accountBalance = ? where id = ?";
-		
-		try {
-			//Using our utility class and method to grab a new connection to the DB
-			conn = ConnectionUtil.getNewConnection();
-			//Using the connection to get a Statement object.
-			stmt = conn.prepareStatement(SQL);
-			//Setting the parameters in our parameterized query
-			stmt.setInt(1, employee.getAccountBalance());
-			stmt.setInt(2, employee.getId());
-			//Executing the query
-			stmt.execute();
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-			conn.close();
-			stmt.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
-	
 	@Override
 	public EmployeeAccount findByUsername(String username) {
 		
@@ -169,7 +121,7 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet set = null;
-		final String SQL = "select * from associates where username = ?";
+		final String SQL = "select * from employees where username = ?";
 		
 		try {
 			conn = ConnectionUtil.getNewConnection();
@@ -183,10 +135,7 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 						set.getInt(1),
 						set.getString(2),
 						set.getString(3),
-						set.getString(4),
-						set.getString(5),
-						set.getString(6),
-						set.getInt(7)
+						set.getBoolean(5)
 						);
 			}
 			
@@ -205,5 +154,12 @@ public class EmployeeRepoImpl implements EmployeeRepo{
 		
 		return employee;
 	}
-
+	
+	@Override
+	public boolean checkPassword(String username, String passwrd) {
+		EmployeeRepo pswrdchk = new EmployeeRepoImpl();
+		return pswrdchk.findByUsername(username).getPasswrd().equals(passwrd);
+		
+	}
+	
 }

@@ -8,26 +8,24 @@ public class EmployeeAccount {
 	// Create instances of Employee info
 	private int id;
 	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String role;
-	private int accountBalance;
+	private String passwrd;
+	private boolean manager;
 	
 	public EmployeeAccount() {
 		
 	}
 
-	public EmployeeAccount(int id, String username, String password, String firstName, String lastName, String role,
-			int accountBalance) {
-		super();
+	public EmployeeAccount(int id, String username, String passwrd, boolean manager) {
 		this.id = id;
 		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.role = role;
-		this.accountBalance = accountBalance;
+		this.passwrd = passwrd;
+		this.manager = manager;
+	}
+	
+	public EmployeeAccount(String username, String passwrd) {
+		this.username = username;
+		this.passwrd = passwrd;
+		this.manager = false;
 	}
 
 	public int getId() {
@@ -46,49 +44,25 @@ public class EmployeeAccount {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswrd() {
+		return passwrd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswrd(String passwrd) {
+		this.passwrd = passwrd;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public boolean isManager() {
+		return manager;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public int getAccountBalance() {
-		return accountBalance;
-	}
-
-	public void setAccountBalance(int accountBalance) {
-		this.accountBalance = accountBalance;
+	public void setManager(boolean manager) {
+		this.manager = manager;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(accountBalance, firstName, id, lastName, password, role, username);
+		return Objects.hash(id, manager, passwrd, username);
 	}
 
 	@Override
@@ -103,15 +77,13 @@ public class EmployeeAccount {
 			return false;
 		}
 		EmployeeAccount other = (EmployeeAccount) obj;
-		return accountBalance == other.accountBalance && Objects.equals(firstName, other.firstName) && id == other.id
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(role, other.role) && Objects.equals(username, other.username);
+		return id == other.id && manager == other.manager && Objects.equals(passwrd, other.passwrd)
+				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "EmployeeAccount [id=" + id + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", role=" + role + ", accountBalance=" + accountBalance + "]";
+		return "EmployeeAccount [id=" + id + ", username=" + username + ", passwrd=" + passwrd + ", manager="
+				+ manager + "]";
 	}
-	
 }

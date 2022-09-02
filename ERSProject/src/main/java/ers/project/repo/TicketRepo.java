@@ -14,11 +14,21 @@ public interface TicketRepo {
 	/**
 	 * Create new ticket
 	 */
-	public void createNewTicket(Ticket ticket);
+	void createNewTicket(Ticket ticket);
+	
+	/**
+	 * List all Pending tickets
+	 */
+	List<Ticket> findAllPending();
+	
+	/**
+	 * Locate by ticket number
+	 */
+	Ticket findByTicketNumber(int ticketNumber);
 	
 	/**
 	 * Update Ticket actionType
 	 */
-	public void updateActionType(int ticketNumber, String actionType, int reviewedBy);
+	void updateActionType(int ticketNumber, String actionType);
 
 }

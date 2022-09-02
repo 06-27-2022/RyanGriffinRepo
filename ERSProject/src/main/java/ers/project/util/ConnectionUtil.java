@@ -9,7 +9,7 @@ public class ConnectionUtil {
 	// Create instances for cleaner try / catch 
 	private static String db_url = System.getenv("db_url");
 	private static String db_username = System.getenv("db_username");
-	private static String db_password = System.getenv("db_password");
+	private static String db_passwrd = System.getenv("db_passwrd");
 	
 	private static Connection conn = null;
 	
@@ -22,10 +22,14 @@ public class ConnectionUtil {
 		}
 		
 		try {
-			conn = DriverManager.getConnection(db_url, db_username, db_password);
+			conn = DriverManager.getConnection(db_url, db_username, db_passwrd);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return conn;
 	}
+	
+	
+	
+	
 }
